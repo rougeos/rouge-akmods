@@ -1,0 +1,3 @@
+docker:
+  ghcr.io/rougeos:
+    use-sigstore-attachments: true

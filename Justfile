@@ -404,6 +404,7 @@ test: (cache-kernel-version) (fetch-kernel)
 push:
     #!/usr/bin/env bash
     {{ if env('COSIGN_PRIVATE_KEY', '') != '' { 'printf "%s" "$COSIGN_PRIVATE_KEY" > /tmp/cosign.key' } else { '' } }}
+    {{ if env('COSIGN_PRIVATE_KEY', '') != '' { 'mkdir -p /etc/containers/registries.d && cp ./files/etc/containers/registries.d/rougeos.yaml /etc/containers/registries.d/' } else { '' } }}
     {{ if env('CI', '') != '' { logsum } else { '' } }}
 
     set ${CI:+-x} -eou pipefail
@@ -429,6 +430,7 @@ manifest_image_kernel := registry / _org / akmods_name + ':' + manifest_tag_kern
 manifest:
     #!/usr/bin/env bash
     {{ if env('COSIGN_PRIVATE_KEY', '') != '' { 'printf "%s" "$COSIGN_PRIVATE_KEY" > /tmp/cosign.key' } else { '' } }}
+    {{ if env('COSIGN_PRIVATE_KEY', '') != '' { 'mkdir -p /etc/containers/registries.d && cp ./files/etc/containers/registries.d/rougeos.yaml /etc/containers/registries.d/' } else { '' } }}
     {{ if env('CI', '') != '' { logsum } else { '' } }}
 
     set ${CI:+-x} -eou pipefail
