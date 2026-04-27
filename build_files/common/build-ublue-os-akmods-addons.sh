@@ -7,6 +7,7 @@ set "${CI:+-x}" -euo pipefail
 echo "priority=85" >> /tmp/ublue-os-akmods-addons/rpmbuild/SOURCES/_copr_ublue-os-akmods.repo
 
 install -D /etc/pki/akmods/certs/public_key.der /tmp/ublue-os-akmods-addons/rpmbuild/SOURCES/public_key.der
+install -D /etc/pki/akmods/certs/public_key_2.der /tmp/ublue-os-akmods-addons/rpmbuild/SOURCES/public_key_2.der
 rpmbuild -ba \
     --define '_topdir /tmp/ublue-os-akmods-addons/rpmbuild' \
     --define '%_tmppath %{_topdir}/tmp' \

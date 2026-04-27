@@ -109,6 +109,7 @@ if [[ "${DUAL_SIGN}" == 'true' ]]; then
         cp /tmp/certs/private_key_2.priv{.test,}
         cp /tmp/certs/public_key_2.der{.test,}
     fi
+    install -Dm644 /tmp/certs/public_key_2.der /etc/pki/akmods/certs/public_key_2.der
     openssl x509 -in /tmp/certs/public_key_2.der -out /tmp/certs/public_key_2.crt
     openssl x509 -in /tmp/certs/public_key.der -out /tmp/certs/public_key.crt
     cat /tmp/certs/private_key.priv <(echo) /tmp/certs/public_key.crt >> /tmp/certs/signing_key_1.pem
